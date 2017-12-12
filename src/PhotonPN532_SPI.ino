@@ -20,7 +20,7 @@ void setup(void) {
 
     lcd.begin(16, 2);
     lcd.setRGB(100, 100, 100);
-    lcd.print("hello, world!");
+    lcd.print("TAG UID");
 
     nfc.begin();
 }
@@ -31,6 +31,9 @@ void loop(void) {
     {
         NfcTag tag = nfc.read();
         tag.print();
+
+        lcd.setCursor(0,1);
+        lcd.print(tag.getUidString());
     }
-    delay(5000);
+    delay(1000);
 }
